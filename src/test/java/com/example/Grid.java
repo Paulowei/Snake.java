@@ -53,7 +53,7 @@ public class Grid extends JPanel{
         label.setLocation(new Point(160,160));
         label.setBounds(new Rectangle(380,10,100,80));
         add(label,0);
-        this.paint(g);
+        //this.paint(g);
     }
     public static void spawn(){
 
@@ -67,9 +67,10 @@ public class Grid extends JPanel{
     //}
     //public static void adjust(){
     //    
-   // }
+    // } 
+    //Java.lang.Thread
     @Override 
-    public void paint(Graphics g){
+    public synchronized void paint(Graphics g){
         //g=this.getParent().getGraphics();
         foreColor = new Color(192,192,192);
         this.setForeground(foreColor);
@@ -95,8 +96,12 @@ public class Grid extends JPanel{
             g.setColor(snake.color);
         }
         snake.paint(g);
-        food.posY=1;
+        //food.posY=1;
         food.paint(g);
+        if(snake.position[0]==food.posX&&snake.position[1]==food.posY){
+            food.update(g);
+            snake.score++;
+        }
         //layeredPane.setLayer(label,JLayeredPane.MODAL_LAYER,0);
         ///ayeredPane.add(label,0);
     }
@@ -105,8 +110,10 @@ public class Grid extends JPanel{
         //this.paint(g);
         snake.update(g);
         //food.update(g);
+        //food.update(g);
         if(snake.position[0]==food.posX&&snake.position[1]==food.posY){
             food.update(g);
+            snake.score++;
         }
     }
     

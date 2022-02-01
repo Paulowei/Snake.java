@@ -43,7 +43,7 @@ import java.awt.Graphics;
         //Dimension D1 = new Dimension(rand.nextInt(Grid.WIDTH),rand.nexInt(Grid.LENGTH);
         //this.setLocation(D1);
         this.addKeyListener(listener);
-        this.spawn();
+        //this.spawn();
         //this.disappear();
     }
     public void spawn(){

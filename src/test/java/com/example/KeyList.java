@@ -5,24 +5,28 @@ import java.awt.event.KeyEvent;
 import com.example.Snake;
 public class KeyList extends KeyAdapter{
     @Override
+    public Snake snake;
+    public KeyList(Snake sn1){
+        this.snake = sn1;
+    }
     public void keyPressed(KeyEvent e){
-        System.out.println(e.getKeyCode());
+        //System.out.println(e.getKeyCode());
         switch(e.getKeyCode()){
             case KeyEvent.VK_UP:
-            Snake.direction[0]=0;
-            Snake.direction[1]=-1;
+            this.snake.direction[0]=0;
+            this.snake.direction[1]=-1;
             break;
             case KeyEvent.VK_DOWN:
-            Snake.direction[0]=0;
-            Snake.direction[1]=1;
+            this.snake.direction[0]=0;
+            this.snake.direction[1]=1;
             break;
             case KeyEvent.VK_LEFT:
-            Snake.direction[0]=-1;
-            Snake.direction[1]=0;
+            this.snake.direction[0]=-1;
+            this.snake.direction[1]=0;
             break;
             case KeyEvent.VK_RIGHT:
-            Snake.direction[0]=1;
-            Snake.direction[1]=0;
+            this.snake.direction[0]=1;
+            this.snake.direction[1]=0;
             break;
             default:
             break;
@@ -30,10 +34,10 @@ public class KeyList extends KeyAdapter{
     }
     @Override
     public void keyTyped(KeyEvent e){
-        System.out.println(e.getKeyCode());
+        //System.out.println(e.getKeyCode());
     } 
     @Override
      public void keyReleased(KeyEvent e){
-        System.out.println(e.getKeyCode());
+        //System.out.println(e.getKeyCode());
     }
 }
