@@ -24,7 +24,6 @@ import java.lang.NullPointerException;
 import java.lang.IllegalArgumentException;
 import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
-
 import java.awt.LayoutManager;
 import java.awt.GridLayout;
 import java.awt.Graphics2D;
@@ -43,15 +42,15 @@ import java.awt.event.KeyEvent;
 import java.awt.Label;
 import java.util.Arrays;
 public class Game extends JFrame implements KeyListener{
-    public Snake snake= new Snake();
-    public Grid grid= new Grid();
-    public Food food= new Food();
+    //public Snake snake= new Snake();
+    //public Grid grid= new Grid();
+    //public Food food= new Food();
     //public Graphics f = new JFrame().getGraphics();
-    BufferedImage image = new BufferedImage(50,50,BufferedImage.TYPE_INT_RGB);
+    public BufferedImage image = new BufferedImage(50,50,BufferedImage.TYPE_INT_RGB);
     public Graphics g = image.getGraphics();
-    public JPanel panel = new JPanel();
+    //public JPanel panel = new JPanel();
     JLayeredPane layeredPane = new JLayeredPane();
-    Label label = new Label();
+    //Label label = new Label();
     public Game(LayoutManager manager){
         super();
         this.setLayout(manager);
@@ -65,12 +64,13 @@ public class Game extends JFrame implements KeyListener{
         try{
         this.frameInit();
         //g = this.getGraphics();
+        /** 
         panel.setLayout(new GridLayout());
         panel.add(snake);
         panel.add(food);
         pane.setLayout(new GridLayout());
         snake.paint(g);
-        pane.add(grid);
+        pane.add(grid);*/
         this.setLocationRelativeTo(null);
         setVisible(true);
         processWindowEvent(new WindowEvent(this,WindowEvent.WINDOW_ACTIVATED));
@@ -94,11 +94,13 @@ public class Game extends JFrame implements KeyListener{
         layeredPane.setBounds(new Rectangle(0,0,100,100));
         layeredPane.setFocusCycleRoot(true);
         layeredPane.setVisible(true);
+        KeyList keylist =  new KeyList(snake);
+        layeredPane.addKeyListener(keylist);
         this.setLayeredPane((layeredPane));
-        g=this.getGraphics();
-        g.drawString("FUN",100,100);
-        String str = new String("Score: ").concat((grid.snake.score).toString());
-        this.addKeyListener(new KeyList());
+        //g=this.getGraphics();
+        //g.drawString("FUN",100,100);
+        //String str = new String("Score: ").concat((grid.snake.score).toString());
+        //this.addKeyListener(new KeyList());
         }catch(IllegalArgumentException|NullPointerException e){
             e.printStackTrace();
         }
@@ -113,13 +115,14 @@ public class Game extends JFrame implements KeyListener{
     public void update(Graphics f){
         while(true){
         layeredPane.update(f);
-        String str = new String("Score: ").concat((grid.snake.score).toString());
+        //String str = new String("Score: ").concat((grid.snake.score).toString());
         layeredPane.repaint();
         grid.update(f);
-        f.drawString(str,150,150);
-        System.out.println(Arrays.deepToString(grid.snake.var1));
+        //f.drawString(str,150,150);
+        //System.out.println(Arrays.deepToString(grid.snake.var1));
         }
     }
+    /** */
     public void keyPressed(KeyEvent e){
         System.out.println(e.getKeyCode());
         switch(e.getKeyCode()){
@@ -149,7 +152,8 @@ public class Game extends JFrame implements KeyListener{
     //@Override
      public void keyReleased(KeyEvent e){
         System.out.println(e.getKeyCode());
-    }
+    }; 
+    */
     //public static void main(Sting[] args){
     //    //Game game  = new Game = Game(new Grid(new Snake))
      //   Game game = new Game(new Grid());
